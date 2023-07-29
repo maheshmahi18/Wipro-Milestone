@@ -1,0 +1,80 @@
+The String Decoder
+
+
+You are provided with a string which has sequence of 1's and 0's.
+This sequence is the encoded version of a English word. You are supposed write a program
+to decode the provided string and find the original word.
+Each alphabet represented by a sequence of 0's.
+This is as mentioned below.
+
+Z: 0
+Y: 00
+X: 000
+W: 0000
+V: 00000
+U: 000000
+T: 0000000
+
+and so on upto A having 26 0's (0000000000000000000000000),
+
+The sequence of 0's in the encoded form are separated by a single 1 which helps to
+distinguish beueen 2 letters.
+
+
+Example 1:
+
+Input: 010010001
+
+The decoded string (original word) will be : ZYX
+
+
+Example 2:
+
+Input: 00001000000000000000000100000000000100000000010000000000001
+
+The decoded string (original word) will be : WIPRO
+
+Note: The decoded string must always be in UPPER case.
+
+
+
+Sollution: Done in Java
+
+
+
+import java.util.*;
+import java.io.*;
+import java.util.Scanner;
+
+class UserMainCode
+{
+  public String StringDecoder(String a)
+  {
+    
+    String b="ZYXWVUTSRQPONMLKJIHGFEDCBA";
+    String c="";
+    int d=-1;
+    for(int i=0; i<a.length(); i++){
+      if(a.charAt(i)=='1'){
+        c+=b.charAt(d);
+        d=-1;
+      }else{
+        d++;
+      }
+    }
+    return c;
+  }
+
+  public static void main(String[] args) 
+  {
+    Scanner sc=new Scanner(System.in);
+    String s=sc.nextLine();
+    UserMainCode mc=new UserMainCode();
+    
+    System.out.print(mc.StringDecoder(s));
+  }
+}
+
+
+
+Code by Mahesh
