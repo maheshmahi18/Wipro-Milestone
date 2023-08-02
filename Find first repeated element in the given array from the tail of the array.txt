@@ -1,0 +1,80 @@
+Find first repeated element in the given array from the tail of the arrays
+
+
+Rajeev works in the data center lab of the survey department. He has been assigned the of identifying "repeated numbers in a given set of numbers. He approaches you to help him achieve this.
+
+Given an array of numbers, your task is to return the first number that repeats (appears again) starting from the last index.
+
+
+For example:
+
+If input1 = (1,2,4,1,2,8) representing the given array, and 
+
+input2 = 6 representing the number of elements in the array,
+
+then the result should be 2 which is the first repeated number in the array from the rear end.
+
+
+Special conditions to be taken care:
+
+Note 1: You should ignore the negative numbers and zeros. The program should consider only non-zero, non-negative numbers from the given array.
+
+Note 2: If no number is repeated then the output should be the last element of the array. 
+
+Note 3: If all elements in the array are negative or O's the output should be 0.
+
+
+
+Sollution: Done in Java
+
+
+
+import java.util.*;
+import java.io.*;
+import java.util.Scanner;
+
+class UserMainCode
+{
+  public void FirstRepeated(int a[], int n)
+  {
+    int count = 0; // Counter for valid elements
+    for(int i = 0; i < n; i++)
+    {
+      if(a[i] >= 1)
+      {
+        a[count] = a[i];
+        count++;
+      }
+    }
+    
+    for(int i = 0; i < count; i++)
+    {
+      for(int j=count-1; j>i; j--)
+      {
+        if(a[i]==a[j])
+        {
+          System.out.print(a[i]);
+          return;
+        }
+      }
+    }
+  }
+
+  public static void main(String[] args) 
+  {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int a[] = new int[n];
+    for(int i = 0; i < n; i++)
+    {
+      a[i] = sc.nextInt();
+    }
+    UserMainCode mc = new UserMainCode();
+    
+    mc.FirstRepeated(a, n);
+  }
+}
+
+
+
+Code by Mahesh
